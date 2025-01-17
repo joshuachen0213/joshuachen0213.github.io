@@ -653,19 +653,36 @@ pre.highlight {
   font-size: 16px;
 }
 @font-face {
-  font-family: myfont;
+  font-family: tex-gyre-pagella;
   src: url("/fonts/tex-gyre-pagella.regular.otf") format("opentype");
+}
+@font-face {
+  font-family: tex-gyre-pagella;
+  src: url("/fonts/tex-gyre-pagella.bold.otf") format("opentype");
+  font-weight: bold;
+}
+@font-face {
+  font-family: tex-gyre-pagella;
+  src: url("/fonts/tex-gyre-pagella.italic.otf") format("opentype");
+  font-style: italic;
+}
+@font-face {
+  font-family: tex-gyre-pagella;
+  src: url("/fonts/tex-gyre-pagella.bold-italic.otf") format("opentype");
+  font-weight: bold;
+  font-style: italic;
 }
 body {
   /* Hux learn from
        *     TypeIsBeautiful,
        *     [This Post](http://zhuanlan.zhihu.com/ibuick/20186806) etc.
        */
-  font-family: myfont, -apple-system, BlinkMacSystemFont, "Helvetica Neue",
-    "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei",
-    "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC",
-    "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC",
-    "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-family: tex-gyre-pagella, -apple-system, BlinkMacSystemFont,
+    "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti",
+    "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC",
+    "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC",
+    "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun,
+    sans-serif;
   line-height: 1.5;
   font-size: 18px;
   color: #404040;
