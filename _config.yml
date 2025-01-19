@@ -5,7 +5,7 @@ header-img: img/home-bg.jpg
 email: joshuachen0213@gmail.com
 description: "Joshua's Blog Page"
 keyword: "Joshua, Blog, National Taiwan University, CSIE"
-url: "joshuachen0213.github.com" # your host, for absolute URL
+url: "https://joshuachen0213.github.io" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 
 # Publish posts or collection documents with a future date.
