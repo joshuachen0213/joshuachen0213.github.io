@@ -655,22 +655,26 @@ pre.highlight {
 @font-face {
   font-family: tex-gyre-pagella;
   src: url("/fonts/tex-gyre-pagella.regular.otf") format("opentype");
+  font-display: swap;
 }
 @font-face {
   font-family: tex-gyre-pagella;
   src: url("/fonts/tex-gyre-pagella.bold.otf") format("opentype");
   font-weight: bold;
+  font-display: swap;
 }
 @font-face {
   font-family: tex-gyre-pagella;
   src: url("/fonts/tex-gyre-pagella.italic.otf") format("opentype");
   font-style: italic;
+  font-display: swap;
 }
 @font-face {
   font-family: tex-gyre-pagella;
   src: url("/fonts/tex-gyre-pagella.bold-italic.otf") format("opentype");
   font-weight: bold;
   font-style: italic;
+  font-display: swap;
 }
 body {
   /* Hux learn from
