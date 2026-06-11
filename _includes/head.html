@@ -1,45 +1,85 @@
 <head>
+  {% assign seo_title = site.SEOTitle %}
+  {% if page.title %}
+    {% assign seo_title = page.title | append: " - " | append: site.SEOTitle %}
+  {% endif %}
+
+  {% assign seo_description = site.description %}
+  {% if page.url != "/" and page.description and page.description != "" %}
+    {% assign seo_description = page.description %}
+  {% elsif page.excerpt %}
+    {% assign seo_description = page.excerpt %}
+  {% elsif page.subtitle %}
+    {% assign seo_description = page.subtitle %}
+  {% endif %}
+  {% assign seo_description = seo_description | strip_html | strip_newlines | normalize_whitespace | strip | truncate: 160 %}
+
+  {% assign seo_image_path = page.image | default: page.header-img | default: site.og-image | default: site.header-img %}
+  {% if seo_image_path contains "://" %}
+    {% assign seo_image_url = seo_image_path %}
+  {% else %}
+    {% assign seo_image_first_char = seo_image_path | slice: 0 %}
+    {% if seo_image_first_char != "/" %}
+      {% assign seo_image_path = "/" | append: seo_image_path %}
+    {% endif %}
+    {% assign seo_image_url = site.url | append: site.baseurl | append: seo_image_path %}
+  {% endif %}
+
+  {% assign canonical_path = page.url | replace: "index.html", "" %}
+  {% assign canonical_url = site.url | append: site.baseurl | append: canonical_path %}
+  {% assign seo_lang = page.lang | default: site.lang | default: "en" %}
+  {% assign seo_locale = "en_US" %}
+  {% if seo_lang contains "zh" %}
+    {% assign seo_locale = "zh_TW" %}
+  {% endif %}
+  {% assign seo_author = page.author | default: site.author | default: site.title %}
+
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1, viewport-fit=cover"
   />
-  <meta name="description" content="{{ site.description }}" />
+  <meta name="description" content="{{ seo_description | escape }}" />
   <meta name="keywords" content="{{ site.keyword }}" />
+  <meta name="author" content="{{ seo_author | escape }}" />
   <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}" />
+  {% if page.url == "/404.html" or page.url == "/offline.html" %}
+  <meta name="robots" content="noindex, follow" />
+  {% else %}
+  <meta name="robots" content="index, follow" />
+  {% endif %}
 
   <!-- Open Graph -->
-  <meta
-    property="og:title"
-    content="{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}"
-  />
+  <meta property="og:title" content="{{ seo_title | escape }}" />
   {% case page.layout %} {% when 'post' %}
   <meta property="og:type" content="article" />
-  <meta
-    property="og:description"
-    content="{{ page.excerpt | strip_html | truncate:200 }}"
-  />
-  {% if page.date %} <meta property="article:published_time" content="{{
-  page.date | date: " %Y-%m-%dT%H:%M:%SZ" }}"> {% endif %} {% if page.author %}
-  <meta property="article:author" content="{{ page.author }}" />
+  <meta property="og:description" content="{{ seo_description | escape }}" />
+  {% if page.date %}
+  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
+  <meta property="article:modified_time" content="{{ page.last_modified_at | default: page.date | date_to_xmlschema }}" />
+  {% endif %}
+  {% if seo_author %}
+  <meta property="article:author" content="{{ seo_author | escape }}" />
   {% endif %} {% for tag in page.tags %}
-  <meta property="article:tag" content="{{ tag }}" />
+  <meta property="article:tag" content="{{ tag | escape }}" />
   {% endfor %} {% else %}
   <meta property="og:type" content="website" />
-  <meta
-    property="og:description"
-    content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"
-  />
+  <meta property="og:description" content="{{ seo_description | escape }}" />
   {% endcase %}
-  <meta property="og:image" content="{{ site.url }}{{ site.sidebar-avatar }}" />
-  <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
-  <meta property="og:site_name" content="{{ site.SEOTitle }}" />
+  <meta property="og:image" content="{{ seo_image_url | escape }}" />
+  <meta property="og:url" content="{{ canonical_url | escape }}" />
+  <meta property="og:site_name" content="{{ site.SEOTitle | escape }}" />
+  <meta property="og:locale" content="{{ seo_locale }}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ seo_title | escape }}" />
+  <meta name="twitter:description" content="{{ seo_description | escape }}" />
+  <meta name="twitter:image" content="{{ seo_image_url | escape }}" />
+  {% if site.twitter_username %}
+  <meta name="twitter:creator" content="@{{ site.twitter_username }}" />
+  {% endif %}
 
-  <title>
-    {% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{
-    site.SEOTitle }}{% endif %}
-  </title>
+  <title>{{ seo_title | escape }}</title>
 
   <!-- Web App Manifest -->
   <link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json" />
@@ -48,10 +88,67 @@
   <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.ico" />
 
   <!-- Canonical URL -->
-  <link
-    rel="canonical"
-    href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
-  />
+  <link rel="canonical" href="{{ canonical_url | escape }}" />
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ site.url }}{{ site.baseurl }}/feed.xml" />
+  {% if paginator.previous_page %}
+    {% assign seo_prev_path = paginator.previous_page_path %}
+    {% if seo_prev_path != "/" %}
+      {% assign seo_prev_path = seo_prev_path | append: "/" %}
+    {% endif %}
+  <link rel="prev" href="{{ site.url }}{{ site.baseurl }}{{ seo_prev_path }}" />
+  {% endif %}
+  {% if paginator.next_page %}
+    {% assign seo_next_path = paginator.next_page_path %}
+    {% if seo_next_path != "/" %}
+      {% assign seo_next_path = seo_next_path | append: "/" %}
+    {% endif %}
+  <link rel="next" href="{{ site.url }}{{ site.baseurl }}{{ seo_next_path }}" />
+  {% endif %}
+
+  <script type="application/ld+json">
+  {% if page.layout == "post" %}
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": {{ canonical_url | jsonify }}
+    },
+    "headline": {{ page.title | default: site.title | strip_html | normalize_whitespace | jsonify }},
+    "description": {{ seo_description | jsonify }},
+    "url": {{ canonical_url | jsonify }},
+    "image": {{ seo_image_url | jsonify }},
+    "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+    "dateModified": {{ page.last_modified_at | default: page.date | date_to_xmlschema | jsonify }},
+    "author": {
+      "@type": "Person",
+      "name": {{ seo_author | jsonify }}
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": {{ site.author | default: site.title | jsonify }}
+    }
+  }
+  {% else %}
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": {{ seo_title | jsonify }},
+    "description": {{ seo_description | jsonify }},
+    "url": {{ canonical_url | jsonify }},
+    "image": {{ seo_image_url | jsonify }},
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": {{ site.title | jsonify }},
+      "url": {{ site.url | append: site.baseurl | append: "/" | jsonify }}
+    },
+    "author": {
+      "@type": "Person",
+      "name": {{ site.author | default: site.title | jsonify }}
+    }
+  }
+  {% endif %}
+  </script>
 
   <link
     rel="preload"
@@ -72,9 +169,8 @@
     onload="this.rel='stylesheet'"
   />
   <noscript>
-    <link rel="stylesheet" href="{{ " /css/bootstrap.min.css" | prepend:
-    site.baseurl }}" /> <link rel="stylesheet" href="{{ " /css/hux-blog.min.css"
-    | prepend: site.baseurl }}" />
+    <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}" />
+    <link rel="stylesheet" href="{{ "/css/hux-blog.min.css" | prepend: site.baseurl }}" />
     <link
       href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"
       rel="stylesheet"
