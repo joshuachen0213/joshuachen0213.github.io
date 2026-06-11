@@ -1,6 +1,8 @@
 # Site settings
 title: Joshua's Blog
 SEOTitle: Joshua Blog
+author: Joshua
+lang: en
 header-img: img/home-bg.jpg
 email: joshuachen0213@gmail.com
 description: "Joshua's Blog Page"
