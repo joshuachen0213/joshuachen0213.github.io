@@ -1,0 +1,154 @@
+.course-review-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 14px;
+  margin: 0 0 12px;
+  padding: 18px;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  background: #fafafa;
+}
+
+.course-review-filter {
+  flex: 1 1 135px;
+
+  &--search {
+    flex: 2 1 230px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 6px;
+    color: @gray-dark;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  input,
+  select {
+    width: 100%;
+    min-height: 42px;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+    color: @gray-dark;
+    font-size: 16px;
+  }
+
+  input:focus,
+  select:focus {
+    border-color: @brand-primary;
+    outline: 3px solid fade(@brand-primary, 22%);
+    outline-offset: 1px;
+  }
+}
+
+.course-review-clear,
+.course-review-empty button {
+  min-height: 42px;
+  padding: 8px 14px;
+  border: 1px solid @brand-primary;
+  border-radius: 4px;
+  background: @brand-primary;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+
+  &:hover,
+  &:focus {
+    background: darken(@brand-primary, 8%);
+    outline: 3px solid fade(@brand-primary, 22%);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    border-color: @brand-gray;
+    background: @brand-gray;
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
+}
+
+.course-review-status {
+  margin: 12px 0 24px;
+  color: @gray-dark;
+  font-size: 14px;
+}
+
+.course-semester {
+  margin: 0 0 52px;
+}
+
+.course-semester__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+  border-bottom: 2px solid @brand-primary;
+
+  h2 {
+    margin: 0 0 10px;
+  }
+}
+
+.course-semester__school {
+  flex: 0 0 auto;
+  color: @brand-primary;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.course-review {
+  padding: 4px 0 30px;
+  border-bottom: 1px solid #ececec;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  h3 {
+    scroll-margin-top: 80px;
+  }
+}
+
+.course-review-empty {
+  margin: 30px 0;
+  padding: 28px 18px;
+  border: 1px dashed @brand-gray;
+  border-radius: 6px;
+  text-align: center;
+
+  p {
+    margin-top: 0;
+  }
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media only screen and (max-width: 767px) {
+  .course-review-filters {
+    display: block;
+    padding: 14px;
+  }
+
+  .course-review-filter,
+  .course-review-clear {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .course-review-clear {
+    margin-bottom: 0;
+  }
+
+  .course-semester__header {
+    display: block;
+    padding-bottom: 10px;
+  }
+
+}

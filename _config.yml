@@ -20,6 +20,10 @@ github_username: joshuachen0213
 # facebook_username:
 linkedin_username: hsin-jui-chen-289bb0329
 
+collections:
+  course_reviews:
+    output: true
+
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 highlighter: rouge

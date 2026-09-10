@@ -1,6 +1,8 @@
 ---
 layout:     post
 title:      "2023 年秋季課程心得"
+date: 2023-12-25
+permalink: /2023/12/25/course-review/
 author: "Joshua"
 catalog: true
 mathjax: true
@@ -8,6 +10,10 @@ header-img: "img/home-bg.jpg"
 header-mask: 0.4
 tags:
   - Course Review
+course_school: ntu
+course_school_label: 臺灣大學
+course_semester: 2023-fall
+course_semester_label: 2023 秋季 (112-1)
 ---
 
 # 2023 年秋季修課心得

@@ -1,8 +1,9 @@
 ---
 layout: null
 ---
+{% assign search_items = site.posts | concat: site.course_reviews | sort: 'date' | reverse %}
 [
-  {% for post in site.posts %}
+  {% for post in search_items %}
     {
       "title"    : "{{ post.title | escape }}",
       "subtitle" : "{{ post.subtitle | escape }}",

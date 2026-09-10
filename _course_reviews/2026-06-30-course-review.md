@@ -1,12 +1,18 @@
 ---
 layout:     post
 title:      "2026 年春季修課心得"
+date: 2026-06-30
+permalink: /2026/06/30/course-review/
 author: "Joshua"
 catalog: true
 header-img: "img/home-bg.jpg"
 header-mask: 0.4
 tags:
   - Course Review
+course_school: ntu
+course_school_label: 臺灣大學
+course_semester: 2026-spring
+course_semester_label: 2026 春季 (114-2)
 ---
 
 # 2026 年春季修課心得
@@ -81,4 +87,3 @@ tags:
 - 心得：
 
   &emsp;&emsp;這門課的內容與「系統專題研究——物聯網中介軟體設計」有一定程度的重疊。不過，兩門課的側重點仍有所不同：這門課較偏向數學理論與模型方法的介紹，而系統專題研究則涵蓋較多系統設計與實作細節。相較之下，我當時對系統專題研究中的具體內容掌握得並不算完整，因此這門課也讓我有機會重新整理相關概念。在期末報告中，我們選擇研究如何透過 Vision Language Model（VLM）進行交通安全理解。具體而言，我們需要訓練一個模型，使其能針對交通影片產生與交通安全情境相關的標題，藉此評估模型對影片中事件與風險的理解能力。此外，這次報告中的主要程式也大多是透過 LLM agent 輔助生成與修改完成的，因此這也是我實際使用 LLM agent 協助專案開發的一次經驗。
-

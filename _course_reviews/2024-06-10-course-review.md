@@ -1,12 +1,18 @@
 ---
 layout:     post
 title:      "2024 年春季課程心得"
+date: 2024-06-10
+permalink: /2024/06/10/course-review/
 author: "Joshua"
 catalog: true
 header-img: "img/home-bg.jpg"
 header-mask: 0.4
 tags:
   - Course Review
+course_school: ntu
+course_school_label: 臺灣大學
+course_semester: 2024-spring
+course_semester_label: 2024 春季 (112-2)
 ---
 
 # 2024 年春季修課心得

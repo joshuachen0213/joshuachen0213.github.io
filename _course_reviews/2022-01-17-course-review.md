@@ -1,12 +1,18 @@
 ---
 layout:     post
 title:      "2021 年秋季課程心得"
+date: 2022-01-17
+permalink: /2022/01/17/course-review/
 author: "Joshua"
 catalog: true
 header-img: "img/home-bg.jpg"
 header-mask: 0.4
 tags:
   - Course Review
+course_school: nthu
+course_school_label: 清華大學
+course_semester: 2021-fall
+course_semester_label: 2021 秋季 (110-1)
 ---
 
 # 2021 年秋季修課心得

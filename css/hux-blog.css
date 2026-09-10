@@ -1760,3 +1760,137 @@ img::-moz-selection {
 .no-scroll {
   overflow-y: hidden;
 }
+
+.course-review-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 14px;
+  margin: 0 0 12px;
+  padding: 18px;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  background: #fafafa;
+}
+.course-review-filter {
+  flex: 1 1 135px;
+}
+.course-review-filter--search {
+  flex: 2 1 230px;
+}
+.course-review-filter label {
+  display: block;
+  margin-bottom: 6px;
+  color: #404040;
+  font-size: 14px;
+  font-weight: 600;
+}
+.course-review-filter input,
+.course-review-filter select {
+  width: 100%;
+  min-height: 42px;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  color: #404040;
+  font-size: 16px;
+}
+.course-review-filter input:focus,
+.course-review-filter select:focus {
+  border-color: #0085a1;
+  outline: 3px solid rgba(0, 133, 161, 0.22);
+  outline-offset: 1px;
+}
+.course-review-clear,
+.course-review-empty button {
+  min-height: 42px;
+  padding: 8px 14px;
+  border: 1px solid #0085a1;
+  border-radius: 4px;
+  background: #0085a1;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+.course-review-clear:hover,
+.course-review-empty button:hover,
+.course-review-clear:focus,
+.course-review-empty button:focus {
+  background: #006378;
+  outline: 3px solid rgba(0, 133, 161, 0.22);
+  outline-offset: 2px;
+}
+.course-review-clear:disabled,
+.course-review-empty button:disabled {
+  border-color: #a3a3a3;
+  background: #a3a3a3;
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+.course-review-status {
+  margin: 12px 0 24px;
+  color: #404040;
+  font-size: 14px;
+}
+.course-semester {
+  margin: 0 0 52px;
+}
+.course-semester__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+  border-bottom: 2px solid #0085a1;
+}
+.course-semester__header h2 {
+  margin: 0 0 10px;
+}
+.course-semester__school {
+  flex: 0 0 auto;
+  color: #0085a1;
+  font-size: 14px;
+  font-weight: 600;
+}
+.course-review {
+  padding: 4px 0 30px;
+  border-bottom: 1px solid #ececec;
+}
+.course-review:last-child {
+  border-bottom: 0;
+}
+.course-review h3 {
+  scroll-margin-top: 80px;
+}
+.course-review-empty {
+  margin: 30px 0;
+  padding: 28px 18px;
+  border: 1px dashed #a3a3a3;
+  border-radius: 6px;
+  text-align: center;
+}
+.course-review-empty p {
+  margin-top: 0;
+}
+[hidden] {
+  display: none !important;
+}
+@media only screen and (max-width: 767px) {
+  .course-review-filters {
+    display: block;
+    padding: 14px;
+  }
+  .course-review-filter,
+  .course-review-clear {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  .course-review-clear {
+    margin-bottom: 0;
+  }
+  .course-semester__header {
+    display: block;
+    padding-bottom: 10px;
+  }
+}

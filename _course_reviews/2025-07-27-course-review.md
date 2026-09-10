@@ -1,12 +1,18 @@
 ---
 layout:     post
 title:      "2025 年春季課程心得"
+date: 2025-07-27
+permalink: /2025/07/27/course-review/
 author: "Joshua"
 catalog: true
 header-img: "img/home-bg.jpg"
 header-mask: 0.4
 tags:
   - Course Review
+course_school: ntu
+course_school_label: 臺灣大學
+course_semester: 2025-spring
+course_semester_label: 2025 春季 (113-2)
 ---
 
 # 2025 年春季修課心得

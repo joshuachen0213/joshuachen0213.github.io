@@ -1,0 +1,86 @@
+---
+layout: page
+title: Course Reviews
+description: Search and browse course reviews by school, semester, course, or professor.
+header-img: img/archive.jpg
+header-mask: 0.3
+permalink: /course-reviews/
+mathjax: true
+---
+
+{% assign review_posts = site.course_reviews | sort: 'date' | reverse %}
+
+<div class="course-reviews" data-course-reviews>
+  <form class="course-review-filters" id="course-review-filters" role="search">
+    <div class="course-review-filter course-review-filter--search">
+      <label for="course-search">搜尋課程或授課教師</label>
+      <input
+        type="search"
+        id="course-search"
+        name="query"
+        autocomplete="off"
+        placeholder="輸入課程或教師名稱"
+      >
+    </div>
+
+    <div class="course-review-filter">
+      <label for="course-school">學校</label>
+      <select id="course-school" name="school">
+        <option value="all">全部學校</option>
+        <option value="nthu">清華大學</option>
+        <option value="ntu">臺灣大學</option>
+      </select>
+    </div>
+
+    <div class="course-review-filter">
+      <label for="course-semester">學期</label>
+      <select id="course-semester" name="semester">
+        <option value="all">全部學期</option>
+        {% for review in review_posts %}
+        <option value="{{ review.course_semester | escape }}">
+          {{ review.course_semester_label }}
+        </option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <button type="button" id="course-clear" class="course-review-clear" disabled>
+      清除篩選條件
+    </button>
+  </form>
+
+  <p id="course-review-status" class="course-review-status" role="status" aria-live="polite">
+    {% if review_posts == empty %}
+    顯示 0 / 0 門課程
+    {% else %}
+    顯示全部課程心得
+    {% endif %}
+  </p>
+
+  <div class="course-review-results">
+    {% for review in review_posts %}
+    <section
+      class="course-semester"
+      data-course-school="{{ review.course_school | escape }}"
+      data-course-school-label="{{ review.course_school_label | escape }}"
+      data-course-semester="{{ review.course_semester | escape }}"
+      data-course-semester-label="{{ review.course_semester_label | escape }}"
+    >
+      <header class="course-semester__header">
+        <h2>{{ review.course_semester_label }}</h2>
+        <span class="course-semester__school">{{ review.course_school_label }}</span>
+      </header>
+      <div class="course-semester__content post-container">
+        {{ review.content }}
+      </div>
+    </section>
+    {% endfor %}
+  </div>
+
+  <div id="course-review-empty" class="course-review-empty"{% if review_posts != empty %} hidden{% endif %}>
+    <p>沒有符合目前搜尋與篩選條件的課程。</p>
+    <button type="button" data-course-reset>清除篩選條件</button>
+  </div>
+</div>
+
+<script src="{{ '/js/course-reviews.js' | prepend: site.baseurl }}" defer></script>

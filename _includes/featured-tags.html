@@ -9,6 +9,7 @@
     {% endif %}
     <h5><a href="{{'/archive/' | prepend: site.baseurl }}">FEATURED TAGS</a></h5>
     <div class="tags">
+        {% assign _article_count = site.posts.size | plus: site.course_reviews.size %}
         {% capture tags %}
         {% comment %}
             there must be no space between for and if otherwise this tricky sort won't work.
@@ -16,11 +17,17 @@
             but it will break sort...
         {% endcomment %}
         {% for tag in site.tags %}{% if tag[1].size > site.featured-condition-size %}
-                <a data-sort="{{ site.posts.size | minus: tag[1].size | prepend: '0000' | slice: -4, 4 }}" 
+                <a data-sort="{{ _article_count | minus: tag[1].size | prepend: '0000' | slice: -4, 4 }}"
                     href="{{ site.baseurl }}/archive/?tag={{ tag[0] | url_encode }}"
                     title="{{ tag[0] }}"
                     rel="{{ tag[1].size }}">{{ tag[0] }}</a>__SEPARATOR__
         {% endif %}{% endfor %}
+        {% if site.course_reviews.size > site.featured-condition-size %}
+                <a data-sort="{{ _article_count | minus: site.course_reviews.size | prepend: '0000' | slice: -4, 4 }}"
+                    href="{{ site.baseurl }}/archive/?tag={{ 'Course Review' | url_encode }}"
+                    title="Course Review"
+                    rel="{{ site.course_reviews.size }}">Course Review</a>__SEPARATOR__
+        {% endif %}
         {% endcapture %}
         {{ tags | split:'__SEPARATOR__' | sort }}
     </div>

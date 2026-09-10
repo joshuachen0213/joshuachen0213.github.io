@@ -1,6 +1,8 @@
 ---
 layout:     post
 title:      "2022 年秋季課程心得"
+date: 2022-12-26
+permalink: /2022/12/26/course-review/
 author: "Joshua"
 catalog: true
 mathjax: true
@@ -8,6 +10,10 @@ header-img: "img/home-bg.jpg"
 header-mask: 0.4
 tags:
   - Course Review
+course_school: ntu
+course_school_label: 臺灣大學
+course_semester: 2022-fall
+course_semester_label: 2022 秋季 (111-1)
 ---
 
 # 2022 年秋季修課心得

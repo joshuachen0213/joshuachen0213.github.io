@@ -14,7 +14,8 @@ layout: null
   </url>
     {% endunless %}
   {% endfor %}
-  {% for post in site.posts %}
+  {% assign content_items = site.posts | concat: site.course_reviews %}
+  {% for post in content_items %}
   <url>
     <loc>{{ site.url }}{{ site.baseurl }}{{ post.url | xml_escape }}</loc>
     <lastmod>{{ post.last_modified_at | default: post.date | date_to_xmlschema }}</lastmod>

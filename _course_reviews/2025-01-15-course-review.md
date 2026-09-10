@@ -1,12 +1,18 @@
 ---
 layout:     post
 title:      "2024 年秋季課程心得"
+date: 2025-01-15
+permalink: /2025/01/15/course-review/
 author: "Joshua"
 catalog: true
 header-img: "img/home-bg.jpg"
 header-mask: 0.4
 tags:
   - Course Review
+course_school: ntu
+course_school_label: 臺灣大學
+course_semester: 2024-fall
+course_semester_label: 2024 秋季 (113-1)
 ---
 
 # 2024 年秋季修課心得
